@@ -189,20 +189,20 @@ def dashboard(request: Request, conn: sqlite3.Connection = Depends(get_db)):
     display_name = user.get("name") or user["email"].split("@")[0]
     display_picture = user.get("picture") or "/static/default_avatar.png"
 
-    return templates.TemplateResponse(
-        "dashboard.html",
-        {
-            "request": request,
-            "user": {
-                "name": display_name,
-                "email": user["email"],
-                "picture": display_picture,
-                "client_id": client_id
-            },
-            "integration_code": integration_code,
-            "faq": faq
-        }
-    )
+return templates.TemplateResponse(
+    "index.html",
+    {
+        "request": request,
+        "user": {
+            "name": display_name,
+            "email": user["email"],
+            "picture": display_picture,
+            "client_id": client_id
+        },
+        "faq": faq
+    }
+)
+
 
 # ----------------------------
 # FAQ / Welcome Message
