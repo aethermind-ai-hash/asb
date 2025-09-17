@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Dashboard – AetherMind</title>
+  
+  <!-- Dashboard CSS -->
+  <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+
+<body>
+  <div class="bg-shape bg-shape1"></div>
+  <div class="bg-shape bg-shape2"></div>
+
+<!-- Top Navigation -->
+<header class="top-nav">
+  <div class="brand">
+    <img src="/static/logo.png" alt="Logo" class="logo">
+    <span class="brand-name">AetherMind</span>
+  </div>
+
+  <!-- Desktop Tabs (only visible on desktop) -->
+  <div class="desktop-tabs">
+    <a href="#home" data-tab="home" class="active">Home</a>
+    <a href="#inbox" data-tab="inbox">Inbox</a>
+    <a href="#chatbot" data-tab="chatbot">Your Chatbot</a>
+    <a href="#integration" data-tab="integration">Integrate Chatbot</a>
+    <a href="#subscription" data-tab="subscription">Subscription</a>
+    <a href="#analytics" data-tab="analytics">Analytics</a>
+    <a href="#manage-faq" data-tab="manage-faq">Manage FAQ</a>
+  </div>
+    <!-- Right side: User / Logout -->
+  <div class="top-nav-right">
+    <button id="logout-btn" class="btn-logout">Logout</button>
+  </div>
+
+
+</header>
+    <!-- Hamburger Icon -->
+  <div class="right-hamburger" id="right-hamburger">
+    <div></div><div></div><div></div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="right-sidebar" id="right-sidebar">
+    <div class="sidebar-header">
+      <img id="user-pic" class="user-pic" 
+           src="{{ user.picture }}" 
+           alt="User Picture"
+           onerror="this.onerror=null;this.src='/static/default_avatar.png';">
+
+      <div id="user-name" class="user-name">{{ user.name }}</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="#home" data-tab="home" class="active">Home</a></li>
+        <li><a href="#inbox" data-tab="inbox">Inbox</a></li>
+        <li><a href="#chatbot" data-tab="chatbot">Your Chatbot</a></li>
+        <li><a href="#integration" data-tab="integration">Integrate Chatbot</a></li>
+        <li><a href="#subscription" data-tab="subscription">Subscription Plans</a></li>
+        <li><a href="#analytics" data-tab="analytics">Analytics</a></li>
+        <li><a href="#manage-faq" data-tab="manage-faq">Manage FAQ</a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button id="logout-btn-sidebar">Logout</button>
+    </div>
+  </div>
+
+  <!-- Overlay -->
+  <div id="sidebar-overlay"></div>
+
+  <!-- Main Dashboard Content -->
+  <main class="dashboard-container">
+
+    <!-- Home/Profile Section -->
+    <section id="home" class="dashboard-section active">
+      <h2 class="dashboard-title">Welcome, {{ user.name }}</h2>
+
+      <div class="subscription-overview card">
+        <h3>Your Subscription</h3>
+        <p><strong>Plan:</strong> {{ user.subscription.plan if user.subscription else 'Free' }}</p>
+        <p><strong>Status:</strong> {{ user.subscription.status if user.subscription else 'Inactive' }}</p>
+        <p><strong>Expires on:</strong> {{ user.subscription.expires_on if user.subscription else 'N/A' }}</p>
+      </div>
+
+      <form id="profile-form" method="post" action="/update_profile" class="profile-form card">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" value="{{ user.name }}" required autocomplete="name">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="{{ user.email }}" required autocomplete="email">
+
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" value="{{ user.company }}" autocomplete="organization">
+
+        <label for="role">Role</label>
+        <input type="text" id="role" name="role" value="{{ user.role }}" autocomplete="organization-title">
+
+        <button type="submit">Save Profile</button>
+      </form>
+    </section>
+
+    <!-- Inbox Section -->
+    <section id="inbox" class="dashboard-section">
+      <!-- Left: Client List -->
+      <div class="inbox-client-list">
+        <div class="inbox-client-item active">
+          <img src="client1.jpg" class="inbox-client-pic" />
+          <div class="inbox-client-info">
+            <p class="inbox-client-name">John Doe</p>
+            <p class="inbox-client-preview">Last message preview...</p>
+          </div>
+          <span class="inbox-client-time">2:45 PM</span>
+        </div>
+        <div class="inbox-client-item">
+          <img src="client2.jpg" class="inbox-client-pic" />
+          <div class="inbox-client-info">
+            <p class="inbox-client-name">Jane Smith</p>
+            <p class="inbox-client-preview">Hey! How are you?</p>
+          </div>
+          <span class="inbox-client-time">12:15 PM</span>
+        </div>
+      </div>
+
+      <!-- Right: Chat Panel -->
+      <div class="inbox-chat-panel">
+        <div class="inbox-chat-header">
+          <img src="client1.jpg" class="inbox-chat-client-pic" />
+          <p class="inbox-chat-client-name">John Doe</p>
+        </div>
+        <div class="inbox-chat-messages">
+          <div class="inbox-message client-message">
+            Hello! I need some help.
+            <span class="inbox-timestamp">2:40 PM</span>
+          </div>
+          <div class="inbox-message manager-message">
+            Sure! How can I assist you today?
+            <span class="inbox-timestamp">2:41 PM</span>
+          </div>
+        </div>
+        <form class="inbox-chat-input-form">
+          <input type="text" id="inbox-chat-input" placeholder="Type a message..." />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+
+<section id="chatbot" class="dashboard-section">
+  <h2 class="dashboard-title">Your Chatbot</h2>
+
+  <!-- Chat container -->
+  <div class="chat-container">
+
+    <!-- Chat messages scroll area -->
+    <div class="chat-box" id="chat-box">
+    </div>
+
+    <!-- Bottom input area inside the chat -->
+    <div class="chat-input-area">
+      <input type="text" id="question-input" placeholder="Ask a question..." />
+      <button id="ask-btn">Send</button>
+    </div>
+
+  </div>
+
+  <!-- Popular questions -->
+  <div id="popular-questions-container">
+    <button class="popular-question">What is your pricing?</button>
+    <button class="popular-question">How to integrate the chatbot?</button>
+    <button class="popular-question">Can I upgrade my plan?</button>
+  </div>
+</section>
+
+
+
+
+
+
+    <!-- Integration Section -->
+    <section id="integration" class="dashboard-section">
+      <h2>Integrate Chatbot</h2>
+      <p>Copy the code below to embed your Aether chatbot:</p>
+
+      <div class="integration-cards">
+        <!-- Website Embed -->
+        <div class="integration-card">
+          <h3>Website Embed</h3>
+          <textarea class="integration-code" id="website-code" readonly>
+<script src="https://yourdomain.com/chatbot.js" data-client-id="{{ user.client_id }}"></script>
+          </textarea>
+          <button class="btn btn-copy" data-target="website-code">Copy Code</button>
+        </div>
+
+        <!-- Facebook -->
+        <div class="integration-card">
+          <h3>Facebook Page</h3>
+          <textarea class="integration-code" id="facebook-code" readonly>
+<script>window.AetherFBChat={clientId:"{{ user.client_id }}"}</script>
+<script src="https://yourdomain.com/fb-chat.js"></script>
+          </textarea>
+          <button class="btn btn-copy" data-target="facebook-code">Copy Code</button>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="integration-card">
+          <h3>WhatsApp Link</h3>
+          <textarea class="integration-code" id="whatsapp-code" readonly>
+https://wa.me/1234567890?text=Hello%20from%20Aether%20Chatbot
+          </textarea>
+          <button class="btn btn-copy" data-target="whatsapp-code">Copy Link</button>
+        </div>
+
+        <!-- Instagram -->
+        <div class="integration-card">
+          <h3>Instagram DM</h3>
+          <textarea class="integration-code" id="instagram-code" readonly>
+https://instagram.com/direct/t/yourusername
+          </textarea>
+          <button class="btn btn-copy" data-target="instagram-code">Copy Link</button>
+        </div>
+
+        <!-- Twitter -->
+        <div class="integration-card">
+          <h3>Twitter DM</h3>
+          <textarea class="integration-code" id="twitter-code" readonly>
+https://twitter.com/messages/compose?recipient_id=your_twitter_id
+          </textarea>
+          <button class="btn btn-copy" data-target="twitter-code">Copy Link</button>
+        </div>
+
+        <!-- LinkedIn -->
+        <div class="integration-card">
+          <h3>LinkedIn Message</h3>
+          <textarea class="integration-code" id="linkedin-code" readonly>
+https://www.linkedin.com/messaging/thread/new/?recipient=your_linkedin_id
+          </textarea>
+          <button class="btn btn-copy" data-target="linkedin-code">Copy Link</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subscription Section -->
+    <section id="subscription" class="dashboard-section">
+      <h2>Subscription Plans</h2>
+      <div class="plans-container">
+
+
+                <!-- Basic Plan -->
+        <div class="plan-card basic">
+          <h3>Basic</h3>
+          <div class="subscription-prices">
+            <span class="monthly">$10 / month</span> | 
+            <span class="yearly"><strong>$100 / year</strong> (2 months free!)</span>
+          </div>
+          <ul>
+            <li>Up to 50 FAQs</li>
+            <li>2 Platform Integrations</li>
+            <li>Unlimited AI Responses (500/month)</li>
+            <li>Custom Welcome Message</li>
+            <li>Popular FAQ Highlighting</li>
+          </ul>
+          <button class="btn btn-basic">Subscribe</button>
+        </div>
+
+        <!-- Standard Plan -->
+        <div class="plan-card standard featured">
+          <h3>Standard</h3>
+          <div class="subscription-prices">
+            <span class="monthly">$25 / month</span> | 
+            <span class="yearly"><strong>$250 / year</strong> (2 months free!)</span>
+          </div>
+          <ul>
+            <li>Up to 200 FAQs</li>
+            <li>Multi-Website Integration</li>
+            <li>Unlimited AI Responses</li>
+            <li>Custom Bot Branding</li>
+            <li>Advanced Analytics</li>
+            <li>Priority Email Support</li>
+          </ul>
+          <button class="btn btn-standard">Subscribe</button>
+        </div>
+
+        <!-- Premium Plan -->
+        <div class="plan-card premium">
+          <h3>Premium</h3>
+          <div class="subscription-prices">
+            <span class="monthly">$50 / month</span> | 
+            <span class="yearly"><strong>$500 / year</strong> (2 months free!)</span>
+          </div>
+          <ul>
+            <li>Unlimited FAQs</li>
+            <li>Unlimited Platform Integrations</li>
+            <li>Advanced AI Features</li>
+            <li>Personalized AI Responses</li>
+            <li>Real-Time Analytics Dashboard</li>
+            <li>Slack / Discord Integration</li>
+            <li>Phone & Chat Support</li>
+          </ul>
+          <button class="btn btn-premium">Subscribe</button>
+        </div>
+
+        <!-- Free Plan -->
+        <div class="plan-card free">
+          <h3>Free</h3>
+          <p class="price">$0 / month</p>
+          <ul>
+            <li>Up to 10 FAQs</li>
+            <li>Basic Analytics</li>
+            <li>1 Platform Integration</li>
+            <li>Limited AI Responses (50/month)</li>
+            <li>Basic Welcome Message</li>
+          </ul>
+          <button class="btn btn-free">Start Free</button>
+        </div>
+
+        <!-- One-Time Purchase / Lifetime -->
+        <div class="plan-card one-time">
+          <h3>Lifetime</h3>
+          <p class="price">$300 One-Time</p>
+          <ul>
+            <li>Unlimited FAQs</li>
+            <li>Dynamic Bot & Dashboard</li>
+            <li>Unlimited AI Responses</li>
+            <li>Multi-Website Integration</li>
+            <li>Advanced Analytics & Reporting</li>
+            <li>1:1 Onboarding Support</li>
+            <li>All Future Features</li>
+          </ul>
+          <button class="btn btn-one-time">Purchase Now</button>
+        </div>
+
+
+
+      </div>
+    </section>
+
+    <!-- Analytics Section -->
+    <section class="dashboard-section" id="analytics">
+      <h2>Analytics Overview</h2>
+
+      <div class="analytics-cards">
+        <!-- Core Metrics -->
+        <div class="card">
+          <h3>Total Interactions</h3>
+          <p id="total-interactions">0</p>
+        </div>
+
+        <div class="card">
+          <h3>Active Users</h3>
+          <p id="active-users">0</p>
+        </div>
+
+        <div class="card">
+          <h3>FAQ Usage</h3>
+          <p id="faq-usage">0 / 0</p>
+          <div class="faq-progress">
+            <div id="faq-progress-bar" style="width:0%; height:8px; background-color:#4caf50; border-radius:4px;"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>New Leads</h3>
+          <p id="new-leads">0</p>
+        </div>
+
+        <!-- AI Usage -->
+        <div class="card">
+          <h3>Remaining AI Requests</h3>
+          <p id="remaining-ai-requests">0 / 0</p>
+        </div>
+
+        <div class="card">
+          <h3>Export Reports</h3>
+          <p>PDF / CSV</p>
+        </div>
+
+        <div class="card">
+          <h3>AI Insights</h3>
+          <p>Most asked questions & trends</p>
+        </div>
+
+        <div class="card">
+          <h3>Integrations with Analytics Tools</h3>
+          <p>All connected platforms</p>
+        </div>
+      </div>
+
+      <!-- Chart Container -->
+      <div class="chart-wrapper" style="position: relative;">
+        <canvas id="ai-bg" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:0;"></canvas>
+        <div class="chart-container" style="position:relative; z-index:1;">
+          <canvas id="dailyInteractionsChart" width="400" height="200"></canvas>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Manage FAQ Section -->
+    <section id="manage-faq" class="dashboard-section">
+      <h2>Manage FAQ</h2>
+
+      <!-- Add / Update FAQ Form -->
+      <form id="add-faq-form">
+        <input id="faq-question" type="text" name="question" placeholder="Enter question" required autocomplete="off">
+        <textarea id="faq-answer" name="answer" placeholder="Enter answer" required autocomplete="off"></textarea>
+
+        <label class="toggle-switch">
+          <input id="faq-popular" type="checkbox">
+          <span class="slider round"></span>
+          <span id="popular-label">Normal</span>
+        </label>
+
+        <button type="submit">Add / Update FAQ</button>
+      </form>
+
+      <!-- View All FAQs Button -->
+      <button id="view-faqs-btn" type="button">View All FAQs</button>
+
+      <!-- Confirm Modal -->
+      <div id="confirmModal" class="modal hidden">
+        <div class="modal-content">
+          <p id="confirmMessage"></p>
+          <button id="confirmYes">Yes</button>
+          <button id="confirmNo">No</button>
+        </div>
+      </div>
+
+      <!-- FAQ List (CRUD) -->
+      <div id="faq-list" class="hidden"></div>
+
+      <!-- Welcome Message -->
+      <textarea id="welcome-message" placeholder="Enter welcome message"></textarea>
+      <button id="save-welcome" type="button">Save Welcome Message</button>
+
+      <!-- Sidebar FAQ Questions (for quick click) -->
+      <h3>All Questions</h3>
+      <ul id="faq-questions"></ul>
+
+      <!-- Popular FAQs -->
+      <h3>Popular FAQs</h3>
+      <div id="popular-faqs"></div>
+
+
+    </section>
+
+  </main>
+
+  <div id="notification-container" style="
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      pointer-events: none;
+  "></div>
+
+  <!-- User JSON -->
+  <script>
+      window.user = {{ user | tojson }};
+      console.log("Current user:", window.user);
+  </script>
+
+  <!-- Dashboard JS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/static/dashboard.js"></script>
+
+  <!-- Section Switch Script -->
+  <script>
+    const tabs = document.querySelectorAll('.sidebar-nav a');
+    const sections = document.querySelectorAll('.dashboard-section');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', e => {
+        e.preventDefault();
+        const target = tab.dataset.tab;
+
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        sections.forEach(sec => {
+          if (sec.id === target) sec.classList.add('active');
+          else sec.classList.remove('active');
+        });
+      });
+    });
+  </script>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+</body>
+</html>

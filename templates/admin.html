@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel – AI Support Bot</title>
+    <link rel="stylesheet" href="/static/admin.css">
+</head>
+<body>
+
+<!-- NAV BAR -->
+<nav class="admin-nav">
+    <div class="nav-left brand-logo">
+        <img src="{{ url_for('static', path='logo.png') }}" alt="Logo">
+        <span>AI Support Bot</span>
+    </div>
+</nav>
+
+<!-- Hamburger Icon: outside header -->
+<div class="right-hamburger" id="right-hamburger">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<!-- Overlay -->
+<div id="sidebar-overlay"></div>
+
+<!-- Sidebar -->
+<div class="right-sidebar" id="right-sidebar">
+  <div class="sidebar-header">
+    <img src="{{ profile_pic }}" alt="User Picture" class="user-pic">
+    <span class="user-name">{{ username }}</span>
+  </div>
+
+  <nav class="sidebar-nav">
+    <ul>
+      <li><a href="#chatbot">Your Chatbot</a></li>
+      <li><a href="#integration">Integrate Chatbot</a></li>
+      <li><a href="#subscription">Subscription Plans</a></li>
+      <li><a href="#analytics">Analytics</a></li>
+      <li><a href="#manage-faq">Manage FAQ</a></li>
+    </ul>
+  </nav>
+
+  <div class="sidebar-footer">
+    <button id="logout-btn-sidebar">Logout</button>
+  </div>
+</div>
+
+    <div id="notice" class="notice">Welcome! Manage FAQs below or check pricing plans.</div>
+
+    <div class="admin-container">
+
+        <!-- HOME TAB -->
+        <div class="tab-content" id="home">
+            <div class="card" style="display:flex; flex-direction:column; align-items:center;">
+                <h2 style="text-align:center; margin-bottom:20px;">Manage FAQs</h2>
+                <form id="faq-form" style="width:100%; max-width:500px;">
+                    <div style="display:flex; flex-direction:column; gap:10px;">
+                        <label>Question</label>
+                        <input type="text" id="faq-question" required>
+                        <label>Answer</label>
+                        <textarea id="faq-answer" required></textarea>
+                        <label>Popular</label>
+                        <label class="switch">
+                            <input type="checkbox" id="faq-popular">
+                            <span class="slider"></span>
+                        </label>
+                        <button type="submit" class="btn-primary premium-btn">💾 Save FAQ</button>
+                    </div>
+                </form>
+                <button id="view-faq-btn" class="btn-primary premium-btn" style="margin-top:20px;">📄 View All FAQs</button>
+            </div>
+        </div>
+
+        <!-- PRICING TAB -->
+        <div class="tab-content hidden" id="pricing">
+            <div class="card">
+                <h2>Pricing Plans</h2>
+                <div class="pricing-container">
+                    <div class="plan-card">
+                        <h3>Base / One-time Setup <span class="badge-recommended">Paid</span></h3>
+                        <p class="price">$50 one-time</p>
+                        <ul class="features">
+                            <li>Rapid fuzzy FAQ system</li>
+                            <li>Modern & premium design</li>
+                            <li>Admin panel access</li>
+                            <li>Manage FAQs yourself</li>
+                            <li>Mark popular questions</li>
+                        </ul>
+                    </div>
+                    <div class="plan-card pro" id="basic-plan">
+                        <h3>Basic <span class="badge-recommended">Recommended</span></h3>
+                        <p class="price"><span class="monthly">$12 / month</span></p>
+                        <ul class="features">
+                            <li>All Base features</li>
+                            <li>Unlimited FAQs</li>
+                            <li>Logo & branding customization</li>
+                            <li>Priority support</li>
+                            <li>Full admin configuration access</li>
+                        </ul>
+                    </div>
+                    <div class="plan-card">
+                        <h3>Pro <span class="badge-coming-soon">Coming Soon</span></h3>
+                        <p class="price">TBD</p>
+                        <ul class="features">
+                            <li>All Basic features</li>
+                            <li>AI chatbot integration</li>
+                            <li>Advanced analytics</li>
+                            <li>Custom integrations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INSTRUCTIONS TAB -->
+        <div class="tab-content hidden" id="instructions">
+            <div class="card">
+                <h2>Instructions</h2>
+                <ol>
+                    <li>Add and manage FAQs using the Home tab.</li>
+                    <li>Check pricing plans to see available features.</li>
+                    <li>Contact support if needed via the Support tab.</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FAQ Modal -->
+    <div id="faq-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <h2>All FAQs</h2>
+            <input type="text" id="search-input" placeholder="Search questions...">
+            <div id="faq-results"></div>
+        </div>
+    </div>
+
+    <!-- Basic Payment Modal -->
+    <div id="basic-payment-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <h2>Basic Plan Payment</h2>
+            <p>Payment details here...</p>
+        </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logout-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <p>Are you sure you want to log out?</p>
+            <button id="confirm-logout" class="btn-primary">Yes, Log Out</button>
+            <button id="cancel-logout" class="btn-secondary">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Notification container -->
+<div id="notification-container"></div>
+
+
+<!-- Overwrite Confirmation Modal -->
+<div id="overwrite-modal" class="modal-overlay">
+    <div class="modal-content">
+        <button class="close-btn">&times;</button>
+        <p id="overwrite-text">This question already exists. Do you want to overwrite it?</p>
+        <button id="confirm-overwrite" class="btn-primary">Yes, Overwrite</button>
+        <button id="cancel-overwrite" class="btn-secondary">Cancel</button>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div id="delete-modal" class="modal-overlay">
+    <div class="modal-content modal-delete">
+        <button class="close-btn">&times;</button>
+        <div class="delete-icon">🗑️</div>
+        <h3>Confirm Deletion</h3>
+        <p id="delete-question-text">Are you sure you want to delete this FAQ?</p>
+        <div class="modal-actions">
+            <button id="confirm-delete" class="btn-primary">Yes, Delete</button>
+            <button id="cancel-delete" class="btn-secondary">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+        window.faq = {{ faq | tojson | safe }};
+    </script>
+    <script src="/static/script.js"></script>
+</body>
+</html>

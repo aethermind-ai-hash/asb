@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Support Bot – Automate Customer Support</title>
+  <link rel="stylesheet" href="/static/landing.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="/static/logo.png" alt="Logo" class="logo">
+      <span class="brand">AI Support Bot</span>
+    </div>
+    <div class="nav-right">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+      <a href="/login" class="btn-primary">Login</a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <h1>Automate Your Customer Support</h1>
+    <p>Smart FAQ management, chatbot integration, and business insights — all in one dashboard.</p>
+    <a href="#pricing" class="btn-primary">Get Started</a>
+  </header>
+
+<!-- =========================
+     Client Features Section
+========================= -->
+<section id="features">
+    <div class="container">
+        <h2>Key Features</h2>
+        <p>Everything you need to get started with your AI chatbot.</p>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-tachometer-alt"></i>
+                <h3>Dashboard Access</h3>
+                <p>View your chatbot usage, conversations, and insights in one intuitive interface.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-credit-card"></i>
+                <h3>One-Time Purchase</h3>
+                <p>Unlock access to the chatbot without subscriptions. Perfect for single-use or small businesses.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Customizable Chat Interface</h3>
+                <p>Adjust themes, colors, and appearance to match your website or brand.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-chart-bar"></i>
+                <h3>Basic Analytics</h3>
+                <p>Monitor number of queries, popular topics, and AI performance.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-plug"></i>
+                <h3>Easy Integration</h3>
+                <p>Embed the chatbot widget on websites with just one click.</p>
+            </div>
+
+            <!-- Future Features -->
+            <div class="feature-card future">
+                <i class="fas fa-calendar-alt"></i>
+                <h3>Subscription Plans</h3>
+                <p>Tiered recurring access for additional premium features.</p>
+            </div>
+
+            <div class="feature-card future">
+                <i class="fas fa-chart-line"></i>
+                <h3>Advanced Analytics</h3>
+                <p>Gain deeper insights on user behavior and AI efficiency.</p>
+            </div>
+
+            <div class="feature-card future">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Multi-Channel Support</h3>
+                <p>Integrate your chatbot across websites, social media, and apps.</p>
+            </div>
+
+            <div class="feature-card future">
+                <i class="fas fa-database"></i>
+                <h3>Custom AI Knowledge Base</h3>
+                <p>Upload FAQs or documents to give your AI personalized knowledge.</p>
+            </div>
+
+            <div class="feature-card future">
+                <i class="fas fa-bell"></i>
+                <h3>Notifications & Alerts</h3>
+                <p>Receive real-time updates for admin or client-side events.</p>
+            </div>
+
+            <div class="feature-card future">
+                <i class="fas fa-cogs"></i>
+                <h3>Automations</h3>
+                <p>Trigger automatic actions based on user queries for faster response handling.</p>
+            </div>
+
+            <div class="feature-card future">
+                <i class="fas fa-lightbulb"></i>
+                <h3>AI Suggestions for FAQ</h3>
+                <p>Receive AI-powered recommendations to continuously improve your knowledge base.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- =========================
+     Pricing / One-Time Purchase
+========================= -->
+<section id="pricing">
+  <div class="container">
+    <div class="pricing-header">
+      <h2>One-Time Purchase</h2>
+      <p>Get life-time full access to the chatbot with all included features for a single payment.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="plan-card">
+        <h3>Standard Plan</h3>
+        <p class="price">$50 <span>(One-Time)</span></p>
+
+        <div class="features-grid">
+          <div class="feature">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard Access</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-chart-bar"></i>
+            <span>Basic Analytics</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-plug"></i>
+            <span>Easy Integration</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-comments"></i>
+            <span>Real-time Chat</span>
+          </div>
+        </div>
+
+<form action="/access" method="post">
+    <input type="hidden" name="email" value="{{ user_email if user_email else '' }}">
+    <button type="submit" class="premium-btn">Get Access</button>
+</form>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <h2>Get in Touch</h2>
+    <p>Email us at <a href="mailto:support@example.com">aethermindsupp0rt.com</a></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 AI Support Bot. All rights reserved.</p>
+  </footer>
+
+  <!-- Font Awesome CDN -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

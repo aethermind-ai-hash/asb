@@ -1,0 +1,1216 @@
+/* =========================
+   PREMIUM ADMIN PANEL STYLING
+========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+/* ===== BASE ===== */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #89f7fe, #66a6ff, #f6d365);
+    background-size: 400% 400%;
+    animation: gradientShift 20s ease infinite;
+    color: #333;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.notice {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    text-align: center;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.admin-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== NAVIGATION BAR ===== */
+.admin-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* centers logo + text vertically */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    color: white;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.admin-nav span {
+    position: relative;
+    top: -15px;
+    /* lift the text slightly */
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: white;
+}
+
+
+.nav-logo {
+    font-weight: 600;
+    font-size: 1.3rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    margin-left: 10px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+/* ===== TAB CONTENT ===== */
+.tab-content.hidden {
+    display: none;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== FAQ FORM ===== */
+#faq-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 500px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+#faq-form label {
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #333;
+}
+
+#faq-form input[type="text"],
+#faq-form textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 0.95em;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+#faq-form input:focus,
+#faq-form textarea:focus {
+    border-color: #4cafef;
+    box-shadow: 0 0 0 3px rgba(76, 175, 239, 0.2);
+    outline: none;
+}
+
+#faq-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+#faq-form .btn-primary {
+    background: linear-gradient(135deg, #4cafef, #007bff);
+    color: white;
+    font-weight: 600;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#faq-form .btn-primary:hover {
+    background: linear-gradient(135deg, #007bff, #4cafef);
+}
+
+/* ===== TOGGLE SWITCH ===== */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 26px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.switch input:checked+.slider {
+    background-color: #007BFF;
+}
+
+.switch input:checked+.slider:before {
+    transform: translateX(24px);
+}
+
+/* ===== MODAL ===== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    padding: 20px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    animation: modalFade 0.3s ease;
+}
+
+@keyframes modalFade {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+/* ===== FAQ RESULTS ===== */
+#faq-results {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.faq-card {
+    background: rgba(240, 248, 255, 0.95);
+    border-left: 4px solid #007BFF;
+    padding: 14px 18px;
+    border-radius: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.faq-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.faq-card h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #007BFF;
+}
+
+.faq-card p {
+    margin: 0;
+    color: #333;
+}
+
+.faq-toggle-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.badge-popular {
+    background: #ff9800;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 8px;
+}
+
+.badge-normal {
+    background: #ccc;
+    color: #333;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 8px;
+}
+
+/* FAQ SEARCH INPUT */
+#search-input {
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid #007BFF;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.2s;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+/* ===== PRICING ===== */
+.pricing-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.plan-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    flex: 1 1 300px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s;
+}
+
+.plan-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.plan-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+}
+
+.plan-card .price {
+    font-weight: 700;
+    margin-left: 8px;
+}
+
+/* ===== PRICE BADGES ===== */
+.plan-card .badge-recommended {
+    background: #4caf50;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 8px;
+    margin-left: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.badge-offer {
+    background-color: #ffd700;
+    color: #000;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.save-badge {
+    background-color: #ff4500;
+    color: #fff;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-left: 4px;
+}
+
+.badge-coming-soon {
+    background-color: #999;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-left: 6px;
+}
+
+/* Features list */
+.features {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 12px;
+}
+
+.features li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+/* PRO PLAN HIGHLIGHT */
+.plan-card.pro {
+    border: 2px solid #007BFF;
+    background: linear-gradient(135deg, #e0f0ff, #ffffff);
+    box-shadow: 0 12px 28px rgba(0, 123, 255, 0.25);
+    position: relative;
+}
+
+.plan-card.pro:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 36px rgba(0, 123, 255, 0.35);
+    background: linear-gradient(135deg, #d0e8ff, #ffffff);
+}
+
+/* ===== FAQ FORM LAYOUT ===== */
+#home .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#home .card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#faq-form div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#faq-form button {
+    width: 100%;
+    max-width: 200px;
+    align-self: center;
+}
+
+#view-faq-btn {
+    margin-top: 20px;
+    align-self: center;
+}
+
+/* ===== DELETE MODAL ===== */
+.delete-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.delete-modal.show {
+    display: flex;
+}
+
+.delete-modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.delete-modal p {
+    margin-bottom: 20px;
+    font-weight: 500;
+    color: #333;
+}
+
+.delete-modal-buttons button {
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    margin: 0 10px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+#confirm-delete {
+    background: linear-gradient(135deg, #ff4d4d, #ff6666);
+    color: white;
+}
+
+#confirm-delete:hover {
+    transform: scale(1.05);
+}
+
+#cancel-delete {
+    background: #ddd;
+    color: #333;
+}
+
+#cancel-delete:hover {
+    transform: scale(1.05);
+}
+
+.delete-faq {
+    background: linear-gradient(135deg, #ff4d4d, #ff7373);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-left: 10px;
+}
+
+.delete-faq:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 77, 77, 0.4);
+}
+
+/* =========================
+   MODAL OVERLAY FIX FOR JS
+========================= */
+.modal-overlay {
+    display: none;
+    /* stays hidden until you add 'show' */
+    pointer-events: none;
+    /* prevents accidental click blocking */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay.show {
+    display: flex;
+    pointer-events: auto;
+    /* only clickable when shown */
+}
+
+
+.modal-overlay .modal-content,
+.modal-overlay .delete-modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    animation: fadeIn 0.3s ease;
+}
+
+/* =========================
+   PREMIUM BUTTON ANIMATIONS
+========================= */
+.premium-btn {
+    background: linear-gradient(135deg, #4cafef, #007bff);
+    color: #fff;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.premium-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 123, 255, 0.4);
+    background: linear-gradient(135deg, #007bff, #4cafef);
+}
+
+.premium-btn:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.premium-btn::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.15);
+    transform: rotate(45deg) translateX(-100%);
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+
+.premium-btn:hover::after {
+    transform: rotate(45deg) translateX(100%);
+}
+
+/* ===== BRAND LOGO (GLOBAL) ===== */
+.brand-logo img {
+    height: 60px;
+    /* or whatever height you want */
+    width: auto;
+    /* keep aspect ratio */
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.brand-logo img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.brand-logo span {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #4CAF50;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    font-family: 'Inter', sans-serif;
+}
+
+/* =========================
+   Logout Confirmation Modal
+========================= */
+#logout-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 9999;
+}
+
+#logout-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#logout-modal .modal-content {
+    background-color: #fff;
+    padding: 30px 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transform: scale(0.8);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+#logout-modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+#logout-modal p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#logout-modal button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#logout-modal #confirm-logout {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+#logout-modal #confirm-logout:hover {
+    background-color: #c9302c;
+}
+
+#logout-modal #cancel-logout {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+#logout-modal #cancel-logout:hover {
+    background-color: #5a6268;
+}
+
+/* =========================
+   Notification Styles
+========================= */
+/* Notification container */
+#notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+/* Individual notification */
+.notification {
+    background-color: #4b6cb7; /* match your panel theme */
+    color: white;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateX(100%); /* start off-screen */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* When notification is shown */
+.notification.show {
+    opacity: 1;
+    transform: translateX(0); /* slide in */
+}
+
+
+/* Slide-out effect */
+.notification.hide {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+/* =========================
+   Overwrite Confirmation Modal
+========================= */
+#overwrite-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 10000;
+}
+
+#overwrite-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#overwrite-modal .modal-content {
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 320px;
+    max-width: 400px;
+    transform: translateY(-30px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+#overwrite-modal.show .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+#overwrite-modal p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+#overwrite-modal .btn-primary,
+#overwrite-modal .btn-secondary {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 0 8px;
+    transition: 0.3s ease;
+}
+
+#overwrite-modal .btn-primary {
+    background-color: #4b6cb7;
+    color: #fff;
+}
+
+#overwrite-modal .btn-primary:hover {
+    background-color: #182848;
+}
+
+#overwrite-modal .btn-secondary {
+    background-color: #ccc;
+    color: #333;
+}
+
+#overwrite-modal .btn-secondary:hover {
+    background-color: #999;
+}
+
+/* =========================
+   Delete Modal Styles
+========================= */
+.modal-delete {
+    max-width: 400px;
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    animation: scaleIn 0.3s ease forwards;
+}
+
+.modal-delete .delete-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+    color: #e74c3c;
+}
+
+.modal-delete h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #333;
+}
+
+.modal-delete p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.modal-delete .modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Scale-in animation */
+@keyframes scaleIn {
+    0% { transform: scale(0.7); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Add hover effects for buttons */
+.modal-delete .btn-primary:hover {
+    background-color: #c0392b;
+}
+
+.modal-delete .btn-secondary:hover {
+    background-color: #bdc3c7;
+}
+
+/* Delete Modal Buttons */
+.modal-delete .modal-actions button {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+/* Yes, Delete button */
+.modal-delete .btn-primary {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+}
+
+.modal-delete .btn-primary:hover {
+    background: linear-gradient(135deg, #c0392b, #e74c3c);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.5);
+}
+
+.modal-delete .btn-primary:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 10px rgba(231, 76, 60, 0.3);
+}
+
+/* Cancel button */
+.modal-delete .btn-secondary {
+    background: #bdc3c7;
+    color: #2c3e50;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.modal-delete .btn-secondary:hover {
+    background: #95a5a6;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+.modal-delete .btn-secondary:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+/* ===== HAMBURGER MENU ===== */
+.hamburger {
+    width: 30px;
+    height: 22px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 10001; /* above overlay */
+}
+
+.hamburger span {
+    display: block;
+    height: 4px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.4s ease;
+}
+
+/* Animate to X */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+/* Slide-in Menu from Right */
+#menu {
+    position: fixed;
+    top: 0;
+    right: -250px;       /* hidden initially on the right */
+    width: 250px;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    color: white;
+    z-index: 1002;       /* above overlay */
+    transition: right 0.3s ease;
+}
+
+/* When menu is open */
+#menu.open {
+    right: 0;            /* slides in from the right */
+}
+
+/* Menu links */
+#menu ul li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: background 0.2s;
+}
+
+#menu ul li a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Overlay */
+#menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;       
+    display: none;       
+}
+
+#menu-overlay.show {
+    display: block;
+}
+
+
+
+#menu-btn {
+    position: fixed;       /* fixed to the window */
+    top: 15px;             /* distance from top */
+    right: 20px;           /* distance from right */
+    width: 30px;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 10003;        /* above everything */
+}
+
+#menu-btn span {
+    display: block;
+    height: 4px;
+    background: white;     /* or black depending on background */
+    border-radius: 2px;
+    transition: all 0.4s ease;
+}
+
+/* Animate to X when active */
+#menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+#menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+#menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Menu container */
+#menu .menu-list {
+    list-style: none;
+    padding: 40px 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Section headers */
+#menu .menu-section {
+    padding: 12px 22px 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #9ca3af; /* subtle gray */
+}
+
+/* Menu links */
+#menu .menu-list li a {
+    display: block;
+    padding: 12px 22px;
+    color: #f0f0f0;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Hover */
+#menu .menu-list li a:hover {
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    color: #fff;
+    transform: translateX(-5px);
+}
+
+/* Logout styling */
+#menu .menu-list li.logout {
+    margin-top: auto;
+}
+
+#menu .menu-list li.logout a {
+    color: #ff6b6b;
+    font-weight: 600;
+}
+
+#menu .menu-list li.logout a:hover {
+    background: rgba(255, 107, 107, 0.15);
+    color: #ff4c4c;
+    transform: none;
+}
+
+/* Section button */
+#menu .accordion {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 14px 22px;
+    text-align: left;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#menu .accordion:hover {
+    color: #fff;
+}
+
+/* Submenu hidden by default */
+#menu .submenu {
+    list-style: none;
+    padding-left: 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+}
+
+/* Expanded state */
+#menu .submenu.active {
+    max-height: 500px; /* enough space to expand */
+    padding: 5px 0 10px;
+}
+
+/* Submenu links */
+#menu .submenu li a {
+    display: block;
+    padding: 10px 22px;
+    color: #f0f0f0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+#menu .submenu li a:hover {
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    color: #fff;
+    transform: translateX(-5px);
+}
+
+/* Logout styling */
+#menu .menu-list li.logout {
+    margin-top: auto;
+}
+
+#menu .menu-list li.logout a {
+    color: #ff6b6b;
+    font-weight: 600;
+}
+
+#menu .menu-list li.logout a:hover {
+    background: rgba(255, 107, 107, 0.15);
+    color: #ff4c4c;
+}
+
+/* Arrow inside accordion */
+#menu .accordion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#menu .accordion .arrow {
+    font-size: 0.85rem;
+    transition: transform 0.3s ease;
+    color: #fff; /* white arrow */
+}
+
+/* Rotate arrow when submenu is open */
+#menu .accordion.active .arrow {
+    transform: rotate(90deg);
+}
+
+
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:700px) {
+    .pricing-container {
+        flex-direction: column;
+    }
+
+}

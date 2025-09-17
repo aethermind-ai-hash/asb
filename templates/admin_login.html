@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login – AI Support Bot</title>
+    <link rel="stylesheet" href="/static/admin_login.css?v=1.1">
+
+</head>
+<body>
+
+<div class="login-container">
+    <!-- Logo -->
+    <img src="{{ url_for('static', path='logo.png') }}" alt="Logo" class="logo">
+
+    <h2>Admin Login</h2>
+
+    {% if detail %}
+        <div class="error-message">{{ detail }}</div>
+    {% endif %}
+
+    {% if user %}
+        <div class="user-info">
+            <p>Welcome, <strong>{{ user.name }}</strong>!</p>
+            <img src="{{ user.picture }}" alt="User Picture" class="user-pic">
+            <p><a href="/user_logout" class="logout-link">Logout</a></p>
+        </div>
+        <form method="POST" action="/admin_login" class="login-form">
+            <input type="password" name="password" placeholder="Enter Admin Password (if required)">
+            <button type="submit">Continue to Admin Panel</button>
+        </form>
+    {% else %}
+        <form method="POST" action="/admin_login" class="login-form">
+            <input type="password" name="password" placeholder="Enter Admin Password" required>
+            <button type="submit">Login</button>
+        </form>
+
+<div class="oauth-login">
+    <p>Or sign in with:</p>
+    <a href="/login" class="google-btn" role="button">Sign in with Gmail</a>
+</div>
+
+    {% endif %}
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector(".login-form");
+    const passwordInput = form?.querySelector("input[name='password']");
+
+    if (form) {
+        form.addEventListener("submit", (e) => {
+            if (!passwordInput.value.trim()) {
+                e.preventDefault();
+                showError("Please enter the admin password.");
+            }
+        });
+    }
+
+    function showError(message) {
+        let errorElem = document.querySelector(".inline-error");
+        if (!errorElem) {
+            errorElem = document.createElement("div");
+            errorElem.className = "inline-error";
+            form.prepend(errorElem);
+        }
+        errorElem.textContent = message;
+    }
+});
+</script>
+
+</body>
+</html>

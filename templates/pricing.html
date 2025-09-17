@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing - AI Support Bot</title>
+<link rel="stylesheet" href="/static/admin.css">
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+.pricing {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.pricing-header, .subscription-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.pricing-header h2 {
+    font-size: 2.5rem;
+    color: #1a73e8;
+    margin-bottom: 10px;
+}
+
+/* Plan container */
+.plan-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+/* Plan card */
+.plan {
+    background: white;
+    border-radius: 12px;
+    padding: 30px 20px;
+    width: 280px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.plan:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* Highlighted plan */
+.plan.highlight {
+    border: 2px solid #3498db;
+    transform: scale(1.05);
+}
+
+/* Plan title & price */
+.plan h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.plan .price {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.plan .yearly-badge {
+    display: inline-block;
+    background: #e74c3c;
+    color: white;
+    font-weight: bold;
+    font-size: 0.85rem;
+    padding: 3px 8px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+/* Features list */
+.plan ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.plan ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    color: #555;
+}
+
+/* Buttons */
+.plan a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 0;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    background: #3498db;
+    transition: background 0.3s ease;
+}
+
+.plan a:hover {
+    background: #2980b9;
+}
+
+/* Special badge for offer */
+.plan .offer {
+    background: #f1c40f;
+    color: #2c3e50;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+    .plan-row {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
+</head>
+<body>
+
+<section class="pricing">
+    <div class="pricing-header">
+        <h2>Start with Our One-Time Purchase</h2>
+        <p>Unlock your bot instantly, then choose the subscription plan that fits your growing needs</p>
+    </div>
+
+    <!-- Your 1-time purchase card here -->
+
+
+    <!-- One-Time Purchase -->
+    <div class="plan-row">
+        <div class="plan">
+            <h2>One-Time Purchase</h2>
+            <div class="price">$50</div>
+            <ul>
+                <li>Store client info</li>
+                <li>Plan type tracking</li>
+                <li>FAQ limits: 20</li>
+                <li>Dynamic bot & admin panel</li>
+            </ul>
+            <a href="#">Buy Now</a>
+        </div>
+    </div>
+
+        <div class="subscription-header">
+        <h3>Subscription Plan</h3>
+        <p>Pick the plan that gives you the features you want</p>
+    </div>
+
+
+    <!-- Monthly Plans -->
+    <div class="plan-row">
+        <div class="plan">
+            <h2>Basic</h2>
+            <div class="price">$7 <span class="offer">or $5/mo yearly</span></div>
+            <ul>
+                <li>Up to 50 FAQs</li>
+                <li>Single platform integration</li>
+                <li>Bug fixes & updates</li>
+                <li>All features from One-Time plan</li>
+            </ul>
+            <a href="#">Subscribe</a>
+        </div>
+
+        <div class="plan highlight">
+            <h2>Standard</h2>
+            <div class="price">$20 <span class="offer">or $15/mo yearly</span></div>
+            <ul>
+                <li>Up to 100 FAQs</li>
+                <li>Multi-platform integration (2)</li>
+                <li>Analytics dashboard</li>
+                <li>AI FAQ suggestions</li>
+                <li>Priority support</li>
+                <li>All features from Basic plan</li>
+            </ul>
+            <a href="#">Subscribe</a>
+        </div>
+
+        <div class="plan">
+            <h2>Premium</h2>
+            <div class="price">$35 <span class="offer">or $30/mo yearly</span></div>
+            <ul>
+                <li>Up to 200 FAQs</li>
+                <li>Unlimited social integration</li>
+                <li>White-label option</li>
+                <li>Hosting + Backup</li>
+                <li>Dedicated support</li>
+                <li>All features from Standard plan</li>
+            </ul>
+            <a href="#">Subscribe</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>

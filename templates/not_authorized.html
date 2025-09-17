@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pricing Plans</title>
+    <link rel="stylesheet" href="/static/admin.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        .plans {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .plan {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            width: 280px;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .plan:hover {
+            transform: translateY(-5px);
+        }
+        .plan h2 {
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+        .price {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #e67e22;
+        }
+        .features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+        .features li {
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose Your Plan</h1>
+        <div class="plans">
+            <!-- One-Time Payment Plan -->
+            <div class="plan">
+                <h2>One-Time Payment</h2>
+                <div class="price">$99</div>
+                <ul class="features">
+                    <li>Full Access to Chatbot</li>
+                    <li>No Monthly Fees</li>
+                    <li>Email Support</li>
+                </ul>
+                <a href="#" class="btn">Buy Now</a>
+            </div>
+            
+            <!-- Monthly Plan -->
+            <div class="plan">
+                <h2>Monthly Plan</h2>
+                <div class="price">$19 / month</div>
+                <ul class="features">
+                    <li>Full Access to Chatbot</li>
+                    <li>Priority Support</li>
+                    <li>Cancel Anytime</li>
+                </ul>
+                <a href="#" class="btn">Subscribe</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

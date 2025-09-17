@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Terms & Conditions – AI Support Bot</title>
+  <link rel="stylesheet" href="/static/terms.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="terms-container">
+    <h1>Terms & Conditions</h1>
+
+    <!-- Show user email -->
+    <p class="user-email">
+      Account: <strong>{{ username }}</strong>
+    </p>
+
+    <div class="terms-content">
+      <p>Welcome to AI Support Bot. Before you can use the chatbot, you must agree to the following terms and conditions.</p>
+      
+      <p><strong>1. License:</strong> You are granted a non-exclusive, non-transferable license to use the chatbot for your business.</p>
+      <p><strong>2. Data:</strong> All data processed by the chatbot is your responsibility. We do not share your data with third parties.</p>
+      <p><strong>3. One-Time Purchase:</strong> Access is granted after a single payment. No refunds unless legally required.</p>
+      <p><strong>4. Updates & Support:</strong> Basic bug fixes are included. Major updates may require additional purchase.</p>
+      <p><strong>5. Liability:</strong> We are not responsible for losses or damages caused by the chatbot.</p>
+      <p><strong>6. Termination:</strong> If you violate these terms, access may be revoked.</p>
+    </div>
+
+    <!-- Display error if checkbox not accepted -->
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form id="terms-form" action="/terms" method="post" class="terms-form">
+      <input type="hidden" name="username" value="{{ username }}">
+      <label>
+        <input type="checkbox" id="agree-checkbox" name="agree" 
+        {% if terms_accepted %}checked{% endif %} required>
+        I have read and agree to the Terms & Conditions
+      </label>
+      <button type="submit" class="btn-primary">Accept & Continue</button>
+    </form>
+  </div>
+
+  <script>
+    // Prevent checkbox from unticking on submit
+    document.getElementById("terms-form").addEventListener("submit", function(e) {
+        const checkbox = document.getElementById("agree-checkbox");
+        if (!checkbox.checked) {
+            e.preventDefault();
+            alert("You must agree to the terms to continue!");
+        }
+        // If checked, form submits normally
+    });
+  </script>
+</body>
+</html>

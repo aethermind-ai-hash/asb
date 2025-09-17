@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Client Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 320px;
+        }
+        .login-container h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .login-container input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #4a90e2;
+            color: white;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background: #357ab8;
+        }
+        .login-container a.google-login {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            background: #de5246;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+        }
+        .login-container a.google-login:hover {
+            background: #c04139;
+        }
+        .error-message {
+            color: red;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Client Login</h1>
+
+        {% if error %}
+            <div class="error-message">{{ error }}</div>
+        {% endif %}
+
+        <form action="/login" method="post">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button type="submit">Login</button>
+        </form>
+
+        <p>Or login with:</p>
+        <a class="google-login" href="/login/google">Google</a>
+    </div>
+</body>
+</html>
