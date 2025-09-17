@@ -1382,3 +1382,89 @@ body {
     flex-direction: row;
   }
 }
+
+/* ==========================
+   COMPLETE MOBILE RESPONSIVE FIX
+========================== */
+@media (max-width: 428px) {
+  /* Body adjustments */
+  body {
+    padding-top: 60px; /* adjust for navbar */
+    margin: 0 0.5rem;
+    overflow-x: hidden;
+  }
+
+  /* Containers stack vertically */
+  .container, .dashboard-section, .inbox-client-list, .inbox-client-item, .chat-box, .content {
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 0.5rem !important;
+    overflow-x: hidden;
+  }
+
+  /* Navbar / Top nav adjustments */
+  .top-nav, .brand, .right-hamburger {
+    width: 100% !important;
+    justify-content: space-between !important;
+    padding: 0.5rem 1rem !important;
+  }
+
+  /* Sidebar / Right panel */
+  .sidebar, .right-panel {
+    position: fixed;
+    top: 0;
+    right: -100%; /* hide by default */
+    height: 100%;
+    width: 80%;
+    max-width: 300px;
+    transition: right 0.3s ease;
+    z-index: 999;
+  }
+
+  .sidebar.open {
+    right: 0;
+  }
+
+  /* Client / inbox items */
+  .inbox-client-item {
+    width: 95% !important;
+    margin: 0.3rem 0 !important;
+  }
+
+  /* Images & logos */
+  img, .inbox-client-pic, .logo {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Text resizing */
+  p, h1, h2, h3, h4, h5, h6 {
+    font-size: 90% !important;
+    text-align: center !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Buttons */
+  button {
+    width: 100% !important;
+    padding: 0.5rem !important;
+    font-size: 90% !important;
+  }
+
+  /* Fix unwanted bottom spacing caused by hidden elements */
+  .hidden {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Adjust any fixed background shapes */
+  .bg-shape {
+    width: 120% !important;
+    height: auto !important;
+    left: -10% !important;
+  }
+}
+
+
