@@ -111,7 +111,7 @@
       <!-- Left: Client List -->
       <div class="inbox-client-list">
         <div class="inbox-client-item active">
-          <img src="client1.jpg" class="inbox-client-pic" />
+          <img src="static/client1.jpg" class="inbox-client-pic">
           <div class="inbox-client-info">
             <p class="inbox-client-name">John Doe</p>
             <p class="inbox-client-preview">Last message preview...</p>
@@ -119,7 +119,7 @@
           <span class="inbox-client-time">2:45 PM</span>
         </div>
         <div class="inbox-client-item">
-          <img src="client2.jpg" class="inbox-client-pic" />
+          <img src="static/client2.jpg" class="inbox-client-pic">
           <div class="inbox-client-info">
             <p class="inbox-client-name">Jane Smith</p>
             <p class="inbox-client-preview">Hey! How are you?</p>
@@ -131,7 +131,7 @@
       <!-- Right: Chat Panel -->
       <div class="inbox-chat-panel">
         <div class="inbox-chat-header">
-          <img src="client1.jpg" class="inbox-chat-client-pic" />
+          <img src="static/client1.jpg" class="inbox-chat-client-pic">
           <p class="inbox-chat-client-name">John Doe</p>
         </div>
         <div class="inbox-chat-messages">
@@ -464,13 +464,10 @@ https://www.linkedin.com/messaging/thread/new/?recipient=your_linkedin_id
 
   <!-- User JSON -->
 <script>
-  {% if user %}
-    window.user = {{ user | tojson }};
-  {% else %}
-    window.user = null;
-  {% endif %}
+  window.user = null; // or put a test object like {name:"John Doe"}
   console.log("Current user:", window.user);
 </script>
+
 
 
   <!-- Dashboard JS -->
