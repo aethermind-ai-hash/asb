@@ -464,14 +464,17 @@ https://www.linkedin.com/messaging/thread/new/?recipient=your_linkedin_id
 
   <!-- User JSON -->
 <script>
-  // Replace with actual user data or null if no user
-  window.user = {
-    name: "John Doe",
-    email: "john@example.com"
-  };
-  
   console.log("Current user:", window.user);
 </script>
+  <script>
+  window.user = {
+    client_id: "12345",           // any ID you want
+    name: "John Doe",             // name shown in dashboard
+    picture: "/static/default_avatar.png",  // path to avatar
+    type: "customer"              // "customer" or "manager"
+  };
+</script>
+
 
 
 
