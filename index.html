@@ -464,18 +464,14 @@ https://www.linkedin.com/messaging/thread/new/?recipient=your_linkedin_id
 
   <!-- User JSON -->
 <script>
-window.user = {
-  name: "John Doe",
-  picture: "static/default_avatar.png",
-  subscription: {
-    plan: "Free",
-    status: "Inactive",
-    expires_on: "N/A"
-  },
-  client_id: "demo-client-id"
-};
-console.log("Current user:", window.user);
+  {% if user %}
+    window.user = {{ user | tojson }};
+  {% else %}
+    window.user = null;
+  {% endif %}
+  console.log("Current user:", window.user);
 </script>
+
 
   <!-- Dashboard JS -->
 
