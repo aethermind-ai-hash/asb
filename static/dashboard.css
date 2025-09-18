@@ -1290,24 +1290,33 @@ body {
 
 /* Mobile phones */
 @media (max-width: 480px) {
+  body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* prevent horizontal scroll */
+  }
+
   .dashboard-section {
     padding: 10px;
+    width: 100%; /* make section full width */
+    box-sizing: border-box; /* include padding in width */
   }
 
   .inbox-client-list {
     flex-direction: column; /* stack clients vertically */
-    gap: 10px; /* spacing between items */
+    gap: 10px;
+    width: 100%;
   }
 
   .inbox-client-item {
-    min-width: 100%; /* full width for small screens */
-  }
-
-  .top-nav .brand-name {
-    font-size: 16px;
+    min-width: 100%; /* full width */
+    margin: 0; /* remove extra margins */
   }
 
   .top-nav {
     padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
+
