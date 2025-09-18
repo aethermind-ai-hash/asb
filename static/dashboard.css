@@ -2,7 +2,7 @@
    BODY & BACKGROUND
 =========================== */
 body {
-   padding-top: 70px;    /* same as navbar height */
+  padding-top: 70px;
   margin: 0;
   font-family: 'Inter', sans-serif;
   background: linear-gradient(135deg, #1a1a2e, #162447, #1f4068);
@@ -17,7 +17,7 @@ body {
 .bg-shape {
   position: absolute;
   border-radius: 50%;
-  opacity: 0.15; /* lighter touch */
+  opacity: 0.15;
   z-index: 0;
   filter: blur(50px) drop-shadow(0 0 15px rgba(255,255,255,0.08));
   transform-style: preserve-3d;
@@ -40,7 +40,6 @@ body {
   right: -150px;
 }
 
-/* 3D floating animation */
 @keyframes float3D {
   0% { transform: translate3d(0,0,0) rotateX(0deg) rotateY(0deg); }
   25% { transform: translate3d(50px,-30px,20px) rotateX(15deg) rotateY(10deg); }
@@ -48,8 +47,6 @@ body {
   75% { transform: translate3d(30px,-50px,10px) rotateX(-10deg) rotateY(15deg); }
   100% { transform: translate3d(0,0,0) rotateX(0deg) rotateY(0deg); }
 }
-
-
 
 /* ==========================
    TOP NAVIGATION BAR
@@ -71,234 +68,85 @@ body {
   transition: background 0.4s ease;
 }
 
-/* -------------------------
-   BRAND LOGO + NAME
-------------------------- */
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
+/* BRAND LOGO + NAME */
+.brand { display: flex; align-items: center; gap: 0.75rem; }
 .logo {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #4ecdc4;
-  transition: transform 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
+  width: 50px; height: 50px; border-radius: 50%; object-fit: cover;
+  border: 2px solid #4ecdc4; transition: transform 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
   animation: float-logo 6s ease-in-out infinite alternate;
 }
-
 .logo:hover {
   transform: scale(1.1) rotate(5deg);
   box-shadow: 0 0 20px #4ecdc4, 0 0 40px rgba(78, 205, 196, 0.4);
   border-color: #00d4ff;
 }
-
 .brand-name {
-  font-weight: 700;
-  font-size: 1.6rem;
-  color: #ffffff;
-  letter-spacing: 1px;
+  font-weight: 700; font-size: 1.6rem; color: #fff; letter-spacing: 1px;
   text-shadow: 0 2px 5px rgba(0,0,0,0.5);
   transition: color 0.4s ease, transform 0.4s ease, text-shadow 0.4s ease;
 }
+.brand-name:hover { color: #00d4ff; transform: scale(1.05); text-shadow: 0 4px 12px rgba(0,212,255,0.5); }
 
-.brand-name:hover {
-  color: #00d4ff;
-  transform: scale(1.05);
-  text-shadow: 0 4px 12px rgba(0,212,255,0.5);
-}
-
-
-
-/* -------------------------
-   DESKTOP TABS
-------------------------- */
-.desktop-tabs {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-}
-
+/* DESKTOP TABS */
+.desktop-tabs { display: flex; gap: 2rem; align-items: center; }
 .desktop-tabs a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  padding: 0.5rem 0;
-  position: relative;
-  transition: color 0.3s ease;
+  color: #fff; text-decoration: none; font-weight: 500; font-size: 1rem; padding: 0.5rem 0;
+  position: relative; transition: color 0.3s ease;
 }
-
 .desktop-tabs a::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: #00d4ff;
-  transition: width 0.3s ease;
+  content: ""; position: absolute; bottom: -4px; left: 0; width: 0%; height: 2px; background: #00d4ff; transition: width 0.3s ease;
 }
+.desktop-tabs a:hover::after, .desktop-tabs a.active::after { width: 100%; }
+.desktop-tabs a:hover, .desktop-tabs a.active { color: #00d4ff; }
 
-.desktop-tabs a:hover::after,
-.desktop-tabs a.active::after {
-  width: 100%;
-}
-
-.desktop-tabs a:hover,
-.desktop-tabs a.active {
-  color: #00d4ff;
-}
-
-
-/* -------------------------
-   LOGOUT BUTTON
-------------------------- */
-.top-nav-right {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end; /* push items to the right */
-  gap: 10px; /* optional spacing between elements */
-  padding-right: 40px; /* optional padding from the right edge */
-}
-
-
-/* Shared logout button style */
+/* LOGOUT BUTTON */
+.top-nav-right { display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding-right: 40px; }
 .btn-logout {
-  padding: 0.5rem 1rem;
-  border: none;
-  background: #ff6b6b;
-  color: #ffffff;
-  font-weight: 600;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 0.5rem 1rem; border: none; background: #ff6b6b; color: #fff;
+  font-weight: 600; border-radius: 6px; cursor: pointer; transition: all 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
+.btn-logout:hover { background: #ff4b4b; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(255, 75, 75, 0.5); }
+#logout-btn { margin-left: 100px; }
+#logout-btn-sidebar { margin-right: 15px; }
 
-.btn-logout:hover {
-  background: #ff4b4b;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(255, 75, 75, 0.5);
-}
-
-/* Desktop logout spacing */
-#logout-btn {
-  margin-left: 100px; /* spacing from other elements */
-}
-
-/* Sidebar logout spacing */
-#logout-btn-sidebar {
-  margin-right: 15px; /* spacing from edge */
-}
-
-
-/* -------------------------
-   HAMBURGER (MOBILE)
-------------------------- */
+/* HAMBURGER */
 .right-hamburger {
-  position: fixed;
-  top: 15px;
-  right: 1.5rem;
-  z-index: 1125;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 28px;
-  height: 22px;
-  cursor: pointer;
-  transition: all 0.4s ease;
+  position: fixed; top: 15px; right: 1.5rem; z-index: 1125;
+  display: flex; flex-direction: column; justify-content: space-between;
+  width: 28px; height: 22px; cursor: pointer; transition: all 0.4s ease;
 }
-
 .right-hamburger div {
-  height: 3px;
-  width: 100%;
-  background-color: #ffffff;
-  border-radius: 2px;
-  transition: all 0.3s ease;
+  height: 3px; width: 100%; background-color: #fff; border-radius: 2px; transition: all 0.3s ease;
 }
-
-/* Hamburger active state (turns into X) */
-.right-hamburger.active div:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
+.right-hamburger.active div:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
 .right-hamburger.active div:nth-child(2) { opacity: 0; }
-.right-hamburger.active div:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
+.right-hamburger.active div:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-/* -------------------------
-   RESPONSIVE
-------------------------- */
-@media screen and (min-width: 1025px) {
-  .right-hamburger { display: none !important; }
-}
-
-@media screen and (max-width: 1024px) {
-  .desktop-tabs,
-  .top-nav-right {
-    display: none;
-  }
-
-  .right-hamburger { display: flex; }
-}
+@media screen and (min-width: 1025px) { .right-hamburger { display: none !important; } }
+@media screen and (max-width: 1024px) { .desktop-tabs, .top-nav-right { display: none; } .right-hamburger { display: flex; } }
 
 /* ==========================
    SIDEBAR (PREMIUM DARK)
 =========================== */
 .right-sidebar {
-  position: fixed;
-  top: 0;
-  right: -280px;
-  width: 280px;
-  height: 100%;
+  position: fixed; top: 0; right: -280px; width: 280px; height: 100%;
   background: linear-gradient(180deg, #1f1f2e, #252540);
   box-shadow: -4px 0 30px rgba(0,0,0,0.7);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: flex; flex-direction: column; justify-content: space-between;
   transition: right 0.4s ease, box-shadow 0.4s ease;
-  z-index: 1120; /* below hamburger */
-  font-family: 'Poppins', 'Inter', sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  color: #f0f0f0;
-  line-height: 1.6;
+  z-index: 1120; font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 500; letter-spacing: 0.5px; color: #f0f0f0; line-height: 1.6;
   backdrop-filter: blur(8px);
 }
-
 .right-sidebar.open { right: 0; box-shadow: -8px 0 40px rgba(0,0,0,0.8); }
 
 /* Sidebar Header */
 .sidebar-header { padding: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; }
-/* Sidebar User Avatar */
-.sidebar-header img,
-.sidebar-header .user-pic {
-    width: 45px;       /* smaller, fits nicely */
-    height: 45px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #4ecdc4; /* optional border */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.sidebar-header img, .sidebar-header .user-pic {
+  width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #4ecdc4; transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.sidebar-header img:hover,
-.sidebar-header .user-pic:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 10px #4ecdc4; /* smaller shadow */
-}
-
-.sidebar-header .user-name {
-    font-weight: 600;
-    font-size: 1rem;  /* slightly smaller for better fit */
-    color: #fff;
-    text-align: left; /* aligns next to avatar */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
+.sidebar-header img:hover, .sidebar-header .user-pic:hover { transform: scale(1.05); box-shadow: 0 0 10px #4ecdc4; }
+.sidebar-header .user-name { font-weight: 600; font-size: 1rem; color: #fff; text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* Sidebar Navigation */
 .sidebar-nav ul { list-style:none; padding:0; margin:1rem 0; }
@@ -311,42 +159,20 @@ body {
 .sidebar-footer button { padding:0.5rem 1rem; border:none; background:#ff6b6b; color:#fff; font-weight:600; border-radius:6px; cursor:pointer; transition:0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; letter-spacing:0.5px; }
 .sidebar-footer button:hover { background:#ff4b4b; transform:translateY(-2px); box-shadow:0 4px 10px rgba(255,75,75,0.5); }
 
-/* -------------------------
-   SIDEBAR OVERLAY
-------------------------- */
+/* Sidebar Overlay */
 #sidebar-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(6px);
-  background: rgba(0,0,0,0.3);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 1115; /* below hamburger, above top-nav and sidebar */
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.3); opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 1115;
 }
-
-/* Show overlay when sidebar is open */
 .right-sidebar.open ~ #sidebar-overlay { opacity:1; pointer-events: all; }
 
 /* ------------------------
    GENERAL UTILITIES
 ------------------------ */
-.hidden {
-  display: none !important;
-}
+.hidden { display: none !important; }
+.dashboard-section { width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px; box-sizing: border-box; }
 
-/* Dashboard container */
-.dashboard-section {
-  width: 100%;       /* full width for all devices */
-  max-width: 1200px; /* keeps desktop neat */
-  margin: 0 auto;    /* center content */
-  padding: 20px;     /* adjust spacing */
-  box-sizing: border-box;
-}
-
+/* The rest of your CSS (Home/Profile, Inbox, Chat, Subscription, Integration, Analytics, FAQ, etc.) remains unchanged with duplicates removed and minor adjustments for consistency. */
 
 /* ==========================
    HOME / PROFILE SECTION
@@ -1420,26 +1246,26 @@ body {
     flex-direction: row;
   }
 }
-/* Mobile phones */
-@media (max-width: 480px) {
-  .dashboard-section {
-    padding: 10px;
-  }
+/* ==========================
+   Responsive Design
+=========================== */
 
-  .inbox-client-list {
-    flex-direction: column; /* stack clients */
+/* Large tablets / small desktops */
+@media (max-width: 1024px) {
+  .dashboard-section {
+    padding: 20px;
   }
 
   .inbox-client-item {
-    min-width: 100%; /* full width for small screens */
+    min-width: 48%; /* 2 items per row */
   }
 
   .top-nav .brand-name {
-    font-size: 16px; /* scale logo text */
+    font-size: 18px;
   }
 
   .top-nav {
-    padding: 10px; /* adjust nav spacing */
+    padding: 15px;
   }
 }
 
@@ -1450,8 +1276,38 @@ body {
   }
 
   .inbox-client-item {
-    min-width: 45%; /* 2 items per row */
+    min-width: 48%; /* still 2 items per row */
+  }
+
+  .top-nav .brand-name {
+    font-size: 17px;
+  }
+
+  .top-nav {
+    padding: 12px;
   }
 }
 
+/* Mobile phones */
+@media (max-width: 480px) {
+  .dashboard-section {
+    padding: 10px;
+  }
 
+  .inbox-client-list {
+    flex-direction: column; /* stack clients vertically */
+    gap: 10px; /* spacing between items */
+  }
+
+  .inbox-client-item {
+    min-width: 100%; /* full width for small screens */
+  }
+
+  .top-nav .brand-name {
+    font-size: 16px;
+  }
+
+  .top-nav {
+    padding: 10px;
+  }
+}
