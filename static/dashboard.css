@@ -1274,98 +1274,93 @@ body {
     flex-direction: row;
   }
 }
+
 /* ==========================
-   Responsive Design
-=========================== */
-
-/* Large tablets / small desktops */
-@media (max-width: 1024px) {
-  .dashboard-section {
-    padding: 20px;
-  }
-
-  .inbox-client-item {
-    min-width: 48%; /* 2 items per row */
-  }
-
-  .top-nav .brand-name {
-    font-size: 18px;
-  }
-
-  .top-nav {
-    padding: 15px;
-  }
-}
-
-/* Small tablets */
+   MOBILE RESPONSIVENESS FIXES
+========================== */
 @media (max-width: 768px) {
-  .dashboard-section {
-    padding: 15px;
+  /* Prevent horizontal scroll */
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
-  .inbox-client-item {
-    min-width: 48%; /* still 2 items per row */
-  }
-
-  .top-nav .brand-name {
-    font-size: 17px;
-  }
-
+  /* Navbar */
   .top-nav {
-    padding: 12px;
+    padding: 0 1rem;
+    justify-content: space-between;
   }
-}
-
-/* Mobile phones */
-@media (max-width: 480px) {
-  body, html {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* prevent horizontal scroll */
+  .brand-name {
+    font-size: 1.2rem;
+    white-space: nowrap;
   }
 
-  .dashboard-section {
-    padding: 10px;
-    width: 100%; /* make section full width */
-    box-sizing: border-box; /* include padding in width */
+  /* Hamburger stays visible */
+  .right-hamburger {
+    right: 1rem;
+    top: 1rem;
+    transform: none;
   }
 
+  /* Inbox: stack list above chat */
+  #inbox {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
   .inbox-client-list {
-    flex-direction: column; /* stack clients vertically */
-    gap: 10px;
+    flex-direction: column; 
+    flex: none;
     width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
   }
-
-  .inbox-client-item {
-    min-width: 100%; /* full width */
-    margin: 0; /* remove extra margins */
-  }
-  .top-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between; /* space between logo and hamburger/menu */
-    align-items: center;
-    padding: 10px;
+  .inbox-chat-panel {
+    flex: none;
     width: 100%;
-    box-sizing: border-box; /* include padding in width */
-    overflow: hidden; /* prevent content overflow */
-  }
-
-  .top-nav .brand-name {
-    font-size: 16px; /* shrink logo text */
-    white-space: nowrap; /* prevent text from wrapping */
-    overflow: hidden;
-    text-overflow: ellipsis; /* truncate long text */
-  }
-
-  .top-nav .brand img {
-    max-width: 40px; /* shrink logo if needed */
+    margin-top: 1rem;
     height: auto;
   }
 
-  .top-nav nav {
-    display: none; /* hide full menu on small screens, use hamburger */
+  /* Chat */
+  .inbox-message,
+  .chat-message {
+    max-width: 90%;
+    font-size: 0.85rem;
+    word-wrap: break-word;
+  }
+
+  /* Sidebar */
+  .right-sidebar {
+    width: 80%;
+    max-width: 260px;
+    right: -100%; /* keep it hidden off-screen */
+  }
+  .right-sidebar.active {
+    right: 0; /* slide in */
+  }
+
+  /* Cards & Sections */
+  .subscription-overview,
+  .profile-form,
+  .integration-card {
+    margin: 1rem auto;
+    width: 95%;
   }
 }
 
+@media (max-width: 480px) {
+  /* Simplify navbar */
+  .brand-name { display: none; } /* hide brand text, keep logo */
+  .logo { width: 36px; height: 36px; }
 
+  /* Chat input */
+  .chat-input-area input {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.6rem;
+  }
+  .chat-input-area button {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
