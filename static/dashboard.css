@@ -1,15 +1,20 @@
 /* ==========================
    BODY & BACKGROUND
 =========================== */
-body {
-  padding-top: 70px;
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #1a1a2e, #162447, #1f4068);
-  color: #f0f0f0;
-  overflow-x: hidden;
-  transition: background 0.5s ease;
+.right-hamburger {
+  position: fixed;
+  top: 15px;
+  right: 1rem;         /* safer than 1.5rem */
+  z-index: 9999;       /* ensure it’s always on top */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 22px;
+  cursor: pointer;
+  transition: all 0.4s ease;
 }
+
 
 /* ==========================
    ANIMATED BACKGROUND SHAPES (BUBBLES)
@@ -111,10 +116,22 @@ body {
 
 /* HAMBURGER */
 .right-hamburger {
-  position: fixed; top: 15px; right: 1.5rem; z-index: 1125;
-  display: flex; flex-direction: column; justify-content: space-between;
-  width: 28px; height: 22px; cursor: pointer; transition: all 0.4s ease;
+  position: fixed;           /* stay on screen */
+  top: 15px;                 /* fine, adjust as needed */
+  right: 1rem;               /* slightly less to avoid overflow */
+  z-index: 9999;             /* high enough to be on top of all elements */
+  display: flex;             /* flex container */
+  flex-direction: column;    
+  justify-content: space-between;
+  width: 28px; 
+  height: 22px;
+  cursor: pointer; 
+  transition: all 0.4s ease;
+
+  /* Prevent mobile browsers from hiding it */
+  max-width: 100vw;          
 }
+
 .right-hamburger div {
   height: 3px; width: 100%; background-color: #fff; border-radius: 2px; transition: all 0.3s ease;
 }
@@ -752,6 +769,7 @@ body {
 /* Plan Cards */
 .plan-card {
   background: rgba(255, 255, 255, 0.05);
+   position: relative;
   border-radius: 12px;
   padding: 1.5rem;
   width: 260px;
