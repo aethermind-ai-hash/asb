@@ -1305,21 +1305,16 @@ body {
   /* Inbox: stack list above chat */
   #inbox {
     flex-direction: column;
-    width: 100%;
-    height: auto;
+    height: auto; /* so it doesn't overflow */
   }
   .inbox-client-list {
-    flex-direction: column; 
-    flex: none;
-    width: 100%;
-    max-height: 200px;
+    flex-direction: column;
+    max-height: 200px; /* optional, scrollable */
     overflow-y: auto;
   }
   .inbox-chat-panel {
-    flex: none;
     width: 100%;
     margin-top: 1rem;
-    height: auto;
   }
 
   /* Chat */
@@ -1548,4 +1543,9 @@ button, .btn {
 
 button:hover, .btn:hover {
   opacity: 0.9;
+}
+.inbox-client-list,
+.inbox-chat-messages,
+.chat-box {
+  -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
 }
