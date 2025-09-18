@@ -336,8 +336,15 @@ body {
 ------------------------ */
 .hidden {
   display: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
+}
+
+/* Dashboard container */
+.dashboard-section {
+  width: 100%;       /* full width for all devices */
+  max-width: 1200px; /* keeps desktop neat */
+  margin: 0 auto;    /* center content */
+  padding: 20px;     /* adjust spacing */
+  box-sizing: border-box;
 }
 
 
@@ -454,12 +461,15 @@ body {
    LEFT: CLIENT LIST
 --------------------------- */
 .inbox-client-list {
-  width: 280px;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
   backdrop-filter: blur(6px);
   overflow-y: auto;
+  display: flex;
+  flex-direction: row; /* default for desktop */
+  flex-wrap: wrap;     /* wrap on smaller screens */
+  gap: 15px; 
 }
 
 .inbox-client-item {
@@ -470,7 +480,10 @@ body {
   border-bottom: 1px solid rgba(255,255,255,0.05);
   cursor: pointer;
   transition: background 0.3s ease;
+  flex: 1 1 200px; /* grow/shrink, min width 200px */
+  min-width: 150px; /* prevents getting too small on mobile */
 }
+
 
 .inbox-client-item:hover,
 .inbox-client-item.active {
@@ -1407,23 +1420,38 @@ body {
     flex-direction: row;
   }
 }
-/* Mobile-specific fixes */
-@media (max-width: 768px) {
-  .hidden {
-    display: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    height: 0 !important;
+/* Mobile phones */
+@media (max-width: 480px) {
+  .dashboard-section {
+    padding: 10px;
   }
 
-  /* Example: adjust layout gaps for mobile */
-  .inbox-client-list,
-  .inbox-chat-panel {
-    gap: 0;
+  .inbox-client-list {
+    flex-direction: column; /* stack clients */
   }
 
-  body {
-    line-height: 1;
+  .inbox-client-item {
+    min-width: 100%; /* full width for small screens */
+  }
+
+  .top-nav .brand-name {
+    font-size: 16px; /* scale logo text */
+  }
+
+  .top-nav {
+    padding: 10px; /* adjust nav spacing */
   }
 }
+
+/* Small tablets */
+@media (max-width: 768px) {
+  .dashboard-section {
+    padding: 15px;
+  }
+
+  .inbox-client-item {
+    min-width: 45%; /* 2 items per row */
+  }
+}
+
 
