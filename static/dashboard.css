@@ -1364,3 +1364,181 @@ body {
     padding: 0.4rem 0.8rem;
   }
 }
+/* ==========================
+   GLOBAL RESET
+========================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* Stop horizontal scrolling */
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: #fff;
+}
+
+/* ==========================
+   NAVBAR
+========================== */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 1000;
+}
+
+.brand-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.right-hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.right-hamburger div {
+  height: 4px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+/* ==========================
+   BACKGROUND SHAPES
+========================== */
+.bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 150, 255, 0.1);
+  z-index: 0;
+}
+
+.bg-shape1 {
+  width: 400px;
+  height: 400px;
+  top: -120px;
+  left: -150px;
+}
+
+.bg-shape2 {
+  width: 400px;
+  height: 400px;
+  bottom: -150px;
+  right: -150px;
+}
+
+/* ==========================
+   DASHBOARD SECTIONS
+========================== */
+.dashboard-section {
+  position: relative;
+  z-index: 1;
+  padding: 90px 20px 40px; /* Leave space for navbar */
+}
+
+/* ==========================
+   INBOX
+========================== */
+#inbox {
+  display: flex;
+  gap: 20px;
+  min-height: calc(100vh - 70px); /* Allow expand */
+  height: auto;
+}
+
+.inbox-client-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+}
+
+.inbox-chat-panel {
+  flex: 3;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* ==========================
+   MOBILE RESPONSIVENESS
+========================== */
+@media (max-width: 768px) {
+  /* Navbar */
+  .top-nav {
+    padding: 0 1rem;
+  }
+  .brand-name {
+    font-size: 1.2rem;
+  }
+
+  /* Inbox: stack list above chat */
+  #inbox {
+    flex-direction: column;
+  }
+  .inbox-client-list {
+    max-width: 100%;
+    width: 100%;
+  }
+  .inbox-chat-panel {
+    width: 100%;
+    flex: unset;
+  }
+
+  /* Background shapes smaller */
+  .bg-shape1, .bg-shape2 {
+    width: 250px;
+    height: 250px;
+    top: -80px;
+    left: -80px;
+    right: -80px;
+    bottom: -60px;
+  }
+}
+
+/* ==========================
+   FORMS & BUTTONS
+========================== */
+input, textarea, select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: none;
+  background: #111;
+  color: #fff;
+}
+
+button, .btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: #fff;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  opacity: 0.9;
+}
