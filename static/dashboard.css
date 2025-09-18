@@ -248,6 +248,14 @@ body {
 /* ==========================
    SIDEBAR (PREMIUM DARK)
 =========================== */
+/* Sidebar User Avatar */
+.sidebar-header img {
+    width: 60px;       /* desired width */
+    height: 60px;      /* desired height */
+    border-radius: 50%; /* makes it circular */
+    object-fit: cover;  /* ensures image fits nicely */
+}
+
 .right-sidebar {
   position: fixed;
   top: 0;
