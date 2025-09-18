@@ -248,14 +248,6 @@ body {
 /* ==========================
    SIDEBAR (PREMIUM DARK)
 =========================== */
-/* Sidebar User Avatar */
-.sidebar-header img {
-    width: 60px;       /* desired width */
-    height: 60px;      /* desired height */
-    border-radius: 50%; /* makes it circular */
-    object-fit: cover;  /* ensures image fits nicely */
-}
-
 .right-sidebar {
   position: fixed;
   top: 0;
@@ -281,10 +273,32 @@ body {
 
 /* Sidebar Header */
 .sidebar-header { padding: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; }
+/* Sidebar User Avatar */
+.sidebar-header img,
+.sidebar-header .user-pic {
+    width: 45px;       /* smaller, fits nicely */
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #4ecdc4; /* optional border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-.sidebar-header .user-pic { width:70px;height:70px;border-radius:50%;object-fit:cover;border:2px solid #4ecdc4;transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.sidebar-header .user-pic:hover { transform: scale(1.05); box-shadow:0 0 15px #4ecdc4; }
-.sidebar-header .user-name { font-weight:600; font-size:1.1rem; color:#fff; text-align:center; transition: color 0.3s ease; }
+.sidebar-header img:hover,
+.sidebar-header .user-pic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #4ecdc4; /* smaller shadow */
+}
+
+.sidebar-header .user-name {
+    font-weight: 600;
+    font-size: 1rem;  /* slightly smaller for better fit */
+    color: #fff;
+    text-align: left; /* aligns next to avatar */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 /* Sidebar Navigation */
 .sidebar-nav ul { list-style:none; padding:0; margin:1rem 0; }
